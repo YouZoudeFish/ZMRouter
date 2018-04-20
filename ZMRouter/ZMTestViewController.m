@@ -16,12 +16,16 @@
 @implementation ZMTestViewController
 
 + (void)load{
-    NSError *error = [ZMRouter registerURLPatternService:@"zm://test" forHandler:^id(NSDictionary *parameter) {
+    NSError *error = [ZMRouter registerURLPatternService:@"zm://test" forHandler:^(NSDictionary * _Nullable parameter) {
         ZMTestViewController *vc = [[self alloc] init];
         vc.dic = parameter;
         UINavigationController *navigationVC = (UINavigationController *)[UIApplication sharedApplication].keyWindow.rootViewController;
         [navigationVC pushViewController:vc animated:YES];
-        return @{@"1":@"111"};
+    }];
+    
+    NSError *error1 = [ZMRouter registerURLPatternService:@"zm://test" forObject:^id(NSDictionary * _Nullable parameter) {
+        ZMTestViewController *vc = [[self alloc] init];
+        return vc;
     }];
 }
 

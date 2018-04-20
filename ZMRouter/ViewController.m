@@ -12,6 +12,7 @@
 @interface ViewController ()
 
 @end
+typedef void(^test111)(int i);
 
 @implementation ViewController
 
@@ -20,11 +21,10 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 - (IBAction)testFunc:(id)sender {
-    [ZMRouter openURLService:@"zm://test"];
-//    id test = [ZMRouter objectOfRegisteredURL:@"zm://test"];
-//    NSLog(@"%@",test);
+//    [ZMRouter openURLService:@"zm://test"];
+    id test = [ZMRouter objectOfRegisteredURL:@"zm://test"];
+    NSLog(@"%@",test);
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

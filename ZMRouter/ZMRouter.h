@@ -13,7 +13,15 @@
 
  @param parameter 返回url中可能传入的参数
  */
-typedef id(^ZMRouterHandler)(NSDictionary * _Nullable parameter);
+typedef void(^ZMRouterHandler)(NSDictionary * _Nullable parameter);
+
+/**
+ 注册服务的回调
+
+ @param parameter 返回url中可能传入的参数
+ @return 注册服务中返回的对象
+ */
+typedef id (^ZMRouterObjectHandler)(NSDictionary * _Nullable parameter);
 /**
  注册对象的回调
 
@@ -35,7 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param handler 需要注册的服务
  */
 + (NSError *)registerURLPatternService:(NSString *)URLPatternString forHandler:(ZMRouterHandler)handler __attribute__((warn_unused_result));
-
++ (NSError *)registerURLPatternService:(NSString *)URLPatternString forObject:(ZMRouterObjectHandler)handler __attribute__((warn_unused_result));
 /**
  通过URL启用注册过的服务
 
